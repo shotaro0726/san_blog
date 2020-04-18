@@ -1,0 +1,65 @@
+{% load static %}
+{% load blog %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>{% block title %}Shotaro{% endblock %}</title>
+    <meta name="description"
+          content="{% block description %}{% endblock %}">
+    <link rel="stylesheet" href="{% static 'diaries/style.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=EB+Garamond:400|Noto+Serif+JP:200,500&display=swap"
+          rel="stylesheet">
+</head>
+<body>
+
+<header>
+    <p id="title"><a href="{% url 'diaries:list' %}">Diary</a></p>
+    <p id="subtitle">Copyright Shotaro Ooki.</p>
+</header>
+
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+
+<aside>
+    <h2>Archives</h2>
+    {% render_month_links %}
+
+    <h2>Category</h2>
+    {% render_category_links %}
+
+    <h2>Link</h2>
+    <ul>
+        <li><a href="https://twitter.com/home?lang=ja">Twitter</a></li>
+        <li><a href="https://www.instagram.com/?hl=ja">インスタ</a></li>
+    </ul>
+
+    <h2>Search</h2>
+    {% render_search_form request %}
+
+</aside>
+
+
+<footer>
+    <p>© Shotaro Ooki &lt;shoutaro0726@gmail.com&gt;</p>
+</footer>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-72333380-3"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'UA-72333380-3');
+</script>
+
+</body>
+</html>
